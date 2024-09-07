@@ -9,7 +9,7 @@ var hotelService = new HotelService(db);
 /* GET hotels listing. */
 router.get('/', async function(req, res, next) {
   const hotels = await hotelService.get();
-  res.send(hotels);
+  res.render('hotels', { title: 'Hotels', hotels: hotels })
 });
 
 router.post('/', jsonParser, async function(req, res, next) {
