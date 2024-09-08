@@ -1,9 +1,29 @@
+const { sequelize } = require("../models");
+
 class RoomService {
     constructor(db) {
         this.client = db.sequelize;
-  this. Room = db. Room;
+        this. Room = db. Room;
         console.log(db)
+        this.client = db.sequelize;
+        this.Room = db.Room;
+        this.Reservation = db.Reservation;
     }
+
+    async rentARoom(userId, roomId, startDate, endDate) {
+
+        sequelize.query('CALL insert_reservation(:UserId, :RoomId, :StartDate, :EndDate)',{ replacements:
+            {
+              RoomId: roomId,
+              UserId: userId,
+              StartDate: startDate,
+              EndDate: endDate
+            }}).then( result => {
+               return result
+                  }).catch( err => {
+                       return (err)
+                  })
+            }
   
   async create(capacity, pricePerDay, hotelId) {
   return this. Room.create(

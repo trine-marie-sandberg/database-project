@@ -22,6 +22,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// Static Middleware
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes

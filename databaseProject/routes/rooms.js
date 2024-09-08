@@ -30,4 +30,13 @@ router.delete('/', jsonParser, async function(req, res, next) {
   res.end()
 });
 
+router.post('/reservation', jsonParser, async function(req, res, next) {
+    let userId = req.body.UserId;
+    let roomId = req.body.RoomId;
+    let startDate = req.body.StartDate;
+    let endDate = req.body.EndDate;
+    await roomService.rentARoom(userId, roomId, startDate, endDate);
+    res.end()
+  });
+
 module.exports = router;
